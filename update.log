@@ -1,0 +1,5 @@
+user add dept_id int nullable
+del email unique index
+create table pro_user
+user_id
+pro_id
