@@ -12,6 +12,7 @@ use App\ChaoDep;
 
 use App\Http\Requests\ProCreateRequest;
 use App\Http\Requests\ProUpdateRequest;
+use Auth;
 
 class ProController extends Controller
 {
@@ -126,7 +127,8 @@ class ProController extends Controller
     }
 
     public function pros(){
-        return ChaoPro::all()->toJson();
+        return Auth::user()->ChaoPros;
+        //return ChaoPro::all()->toJson();
     }
 
 }

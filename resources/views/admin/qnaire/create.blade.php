@@ -146,7 +146,7 @@
                 vote_begin_time:null,
                 vote_end_date:null,
                 vote_end_time:null,
-                proid:1,
+                proid:0,
                 vote_titles:[],
                 input_tables:[],
                 zanflag:false,
@@ -228,6 +228,7 @@
         created:function(){
             $.getJSON("{{ url('admin/pro/pros') }}",function(data){
                 this.chaopros=data;
+                this.chaosky.proid=data[0].proid;
             }.bind(this));
             var date = new Date();
             var seperator1 = "-";
