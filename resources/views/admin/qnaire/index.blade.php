@@ -37,6 +37,7 @@
                     <th>发布时间</th>
                     <th>标题</th>
                     <th>栏目名称</th>
+                    <th>单位名称</th>
                     <th>发布人</th>
                     <th>审核人</th>
                     <th>审核标志</th>
@@ -61,6 +62,9 @@
                         <a href="{{ route('admin.qnaire.searchbypro', $chaoSky->proid) }}" >
                             {{ $chaoSky->chaoPro->proname }}
                         </a>
+                    </td>
+                    <td>
+                        {{ $chaoSky->chaoPro->chaoDep->depname }}
                     </td>
                     <td>
                         <a href="{{ route('admin.qnaire.searchbyuser', $chaoSky->createUser->id) }}" >

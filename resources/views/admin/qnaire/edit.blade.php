@@ -316,22 +316,6 @@
             format: "HH:i"
         });
 
-        $('#btn_add_voteitem').on('click',function(){
-            $('#voteitems').append(' <div class="voteitem form-group"> <input name="voteitemids[]" type="hidden" value="0"> <label class="control-label"> 选项 </label> <input class="form-control" name="vote_items[]" type="text"> <label class="control-label"> 票数 </label> <input class="form-control" name="votecounts[]" type="text" value="0"> <label class="control-label"> 缩略图 </label> <input type="text" class="form-control" name="itemimgs[]" > <div class="itemimg-upload btn btn-info btn-xs" title="上传"> 上传 </div> <label class="control-label"> 视频 </label> <input type="text" class="form-control" name="itemvideos[]" > <div class="itemvideo-upload btn btn-info btn-xs" title="上传"> 上传 </div> <button type="button" class="btn btn-xs btn-danger btn-remove-self"> <i class="fa fa-times-circle fa-lg"> </i> </button> </div> ');
-        });
-
-        $('#btn_empty_voteitem').on('click',function(){
-           $('#voteitems').empty();
-        });
-
-        $('#btn_remove_voteitem').on('click',function(){
-           $("#voteitems .voteitem:last").remove();
-        });
-
-        $('.form-group').delegate(".btn-remove-self","click",function(){
-            $(this).parent().remove();
-        });
-
         //上传图片相关
 
         $('.upload-mask').on('click',function(){
@@ -361,7 +345,7 @@
 
         var itarget;
 
-        $('#voteitems').on('click','.itemimg-upload',function(){
+        $('#votetitles').on('click','.itemimg-upload',function(){
             $('.upload-mask').show();
             $('.upload-file').show();
 
@@ -369,7 +353,7 @@
             itarget=$(this).prev();
         });
 
-        $('#voteitems').on('click','.itemvideo-upload',function(){
+        $('#votetitles').on('click','.itemvideo-upload',function(){
             $('.upload-mask').show();
             $('.upload-file').show();
 
@@ -411,12 +395,16 @@
                 $('.upload-file').hide();
                 if (response.filetype=='image'){
                     $("#tipimg1").val(response.src);
+                    $("#tipimg1").focus();
                 }else if (response.filetype=='video'){
                     $("#tipvideo").val(response.src);
+                    $("#tipvideo").focus();
                 }else if (response.filetype=='itemimage'){
                     itarget.val(response.src);
+                    itarget.focus();
                 }else if (response.filetype=='itemvideo'){
                     itarget.val(response.src);
+                    itarget.focus();
                 }
 
             }
