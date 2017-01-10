@@ -73,6 +73,7 @@
                 <input class="form-control" name="publish_time" id="publish_time" type="text" v-model="chaosky.publish_time" >
             </div>
         </div>
+        @can('create-zan')
         <div class="form-group">
             <div class="col-md-8 col-md-offset-3">
                 <div class="checkbox">
@@ -83,7 +84,6 @@
                 </div>
             </div>
         </div>
-        @can('create-zan')
         <div class="form-group" v-if="chaosky.zanflag">
             <label for="zannum" class="col-md-3 control-label">
                 点赞数
