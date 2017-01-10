@@ -83,6 +83,7 @@
                 </div>
             </div>
         </div>
+        @can('create-zan')
         <div class="form-group" v-if="chaosky.zanflag">
             <label for="zannum" class="col-md-3 control-label">
                 点赞数
@@ -99,6 +100,7 @@
                 <input class="form-control" name="zan_end_date" id="zan_end_date" type="text" v-model="chaosky.zan_end_date" >
             </div>
         </div>
+        @endcan
         <div class="form-group" v-show="chaosky.zanflag">
             <label for="zan_end_time" class="col-md-3 control-label">
                 点赞结束时间
