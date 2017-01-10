@@ -100,7 +100,6 @@
                 <input class="form-control" name="zan_end_date" id="zan_end_date" type="text" v-model="chaosky.zan_end_date" >
             </div>
         </div>
-        @endcan
         <div class="form-group" v-show="chaosky.zanflag">
             <label for="zan_end_time" class="col-md-3 control-label">
                 点赞结束时间
@@ -109,6 +108,7 @@
                 <input class="form-control" name="zan_end_time" id="zan_end_time" type="text" v-model="chaosky.zan_end_time" >
             </div>
         </div>
+        @endcan
         @can('create-toporder')
         <div class="form-group">
             <div class="col-md-8 col-md-offset-3">
