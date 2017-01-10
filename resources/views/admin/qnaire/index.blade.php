@@ -57,8 +57,16 @@
                         {{ $chaoSky->stime->format('Y-m-d H:i:s') }}
                     </td>
                     <td>{{ $chaoSky->tiptitle }}</td>
-                    <td>{{ $chaoSky->chaoPro->proname }}</td>
-                    <td>{{ $chaoSky->createUser->name }}</td>
+                    <td>
+                        <a href="{{ route('admin.qnaire.searchbypro', $chaoSky->proid) }}" >
+                            {{ $chaoSky->chaoPro->proname }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ route('admin.qnaire.searchbyuser', $chaoSky->createUser->id) }}" >
+                            {{ $chaoSky->createUser->name }}
+                        </a>
+                    </td>
                     <td>
                         @if ($chaoSky->postUser)
                             {{ $chaoSky->postUser->name }}

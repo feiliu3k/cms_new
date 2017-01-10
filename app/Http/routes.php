@@ -54,6 +54,8 @@ $router->group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix'=>'admin
     //resource('qnaire', 'QnaireController', ['except' => 'show']);
 
     get('qnaire/search',['uses'=>'QnaireController@search','as'=>'admin.qnaire.search']);
+    get('qnaire/searchbypro/{proid}',['uses'=>'QnaireController@searchByPro','as'=>'admin.qnaire.searchbypro']);
+    get('qnaire/searchbyuser/{userid}',['uses'=>'QnaireController@searchByUser','as'=>'admin.qnaire.searchbyuser']);
 
     get('qnaire',['uses'=>'QnaireController@index','as'=>'admin.qnaire.index']);
     get('qnaire/create',['uses'=>'QnaireController@create','as'=>'admin.qnaire.create']);

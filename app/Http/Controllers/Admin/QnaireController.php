@@ -455,4 +455,18 @@ class QnaireController extends Controller
         }
         return view('admin.news.index',compact('chaoSkies','searchText'));
     }
+    public function searchByUser($userid)
+    {
+        $searchText=null;
+
+        $chaoSkies=null;
+
+        $chaoSkies = ChaoSky::where('delflag',0)
+                            ->where('userid',$userid)
+                            ->orderBy('stime', 'desc')
+                            ->paginate(config('cms.posts_per_page'));
+
+        return view('admin.news.index',compact('chaoSkies','searchText'));
+    }
+
 }
