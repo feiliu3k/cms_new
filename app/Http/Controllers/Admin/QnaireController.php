@@ -67,7 +67,7 @@ class QnaireController extends Controller
     {
 
         //$post = ChaoSky::create($request->postFillData());
-        dd($request->proid);
+        //dd($request->proid);
 
         $chaoSky = New ChaoSky();
         $chaoSky->tiptitle=$request->tiptitle;
