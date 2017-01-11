@@ -20,7 +20,7 @@ class Jrsx extends Model
 
     public function remarks()
     {
-        return $this->hasMany('App\Jrsxremark','jrsxid','id');
+        return $this->hasMany('App\JrsxRemark','jrsxid','id');
     }
 
     public function getPicAttribute($value)

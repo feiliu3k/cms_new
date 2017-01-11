@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Jrsx;
-use App\Jrsxremark;
+use App\JrsxRemark;
 
 use Auth;
 
@@ -43,7 +43,7 @@ class RemarkController extends Controller
      */
     public function store(Request $request)
     {
-        $jrsxremark = new Jrsxremark();
+        $jrsxremark = new JrsxRemark();
         $jrsxremark->userid=Auth::user()->id;
         $jrsxremark->remark=$request->remark;
         Jrsx::findOrFail($request->jrsx_id)->remarks()->save($jrsxremark);
@@ -62,7 +62,7 @@ class RemarkController extends Controller
      */
     public function edit(Request $request)
     {
-        $jrsxremark=Jrsxremark::where('jrsxid',$request->jrsx_id)->where('userid',Auth::user()->id)->get();
+        $jrsxremark=JrsxRemark::where('jrsxid',$request->jrsx_id)->where('userid',Auth::user()->id)->get();
     }
 
     /**
@@ -74,7 +74,7 @@ class RemarkController extends Controller
      */
     public function update(Request $request)
     {
-        $jrsxremark=Jrsxremark::findOrFail($request->jrsxremarkid);
+        $jrsxremark=JrsxRemark::findOrFail($request->jrsxremarkid);
         $jrsxremark->remark=$request->remark;
         $jrsxremark->save();
         return redirect()
