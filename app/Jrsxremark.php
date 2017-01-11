@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jrsxremark extends Model
+class JrsxRemark extends Model
 {
     protected $table = 'jrsxremark';
     protected $primaryKey='id';
