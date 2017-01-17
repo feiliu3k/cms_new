@@ -37,25 +37,43 @@
                     <th>发布时间</th>
                     <th>标题</th>
                     <th>栏目名称</th>
+                    <th>单位名称</th>
                     <th>发布人</th>
                     <th>审核人</th>
                     <th>审核标志</th>
                     <th>草稿标志</th>
+                    <th>置顶标志</th>
+                    @if (Auth::check())
+                        @can('list-readnum')
+                            <th>阅读数</th>
+                        @endcan
+                    @endif
                     <th data-sortable="false">操作</th>
                 </tr>
             </thead>
             <tbody>
             @foreach ($chaoSkies as $chaoSky)
                 <tr>
-                    <td data-order="{{ $chaoSky->stime }}">
-                        {{ $chaoSky->stime }}
+                    <td data-order="{{ $chaoSky->stime->timestamp }}">
+                        {{ $chaoSky->stime->format('Y-m-d H:i:s') }}
                     </td>
                     <td>{{ $chaoSky->tiptitle }}</td>
-                    <td>{{ $chaoSky->proname }}</td>
-                    <td>{{ $chaoSky->username }}</td>
+                    <td>
+                        <a href="{{ route('admin.qnaire.searchbypro', $chaoSky->proid) }}" >
+                            {{ $chaoSky->chaoPro->proname }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ $chaoSky->chaoPro->chaoDep->depname }}
+                    </td>
+                    <td>
+                        <a href="{{ route('admin.qnaire.searchbyuser', $chaoSky->createUser->id) }}" >
+                            {{ $chaoSky->createUser->name }}
+                        </a>
+                    </td>
                     <td>
                         @if ($chaoSky->postUser)
-                            {{ $chaoSky->postUser }}
+                            {{ $chaoSky->postUser->name }}
                         @else
                             未审核
                         @endif
@@ -74,12 +92,23 @@
                             已发布
                         @endif
                     </td>
-
+                    <td class="hidden-sm">
+                        @if ($chaoSky->toporder)
+                            已置顶
+                        @endif
+                    </td>
+                    @if (Auth::check())
+                        @can('list-readnum')
+                            <td class="hidden-sm">
+                                {{ $chaoSky->readnum }}
+                            </td>
+                        @endcan
+                    @endif
                     <td>
                         <a href="{{ route('admin.qnaire.edit', $chaoSky->tipid) }}" class="btn btn-xs btn-info">
                             <i class="fa fa-edit"></i> 编辑
                         </a>
-                        <a href="{{ url('news',[$chaoSky->tipid]) }}" class="btn btn-xs btn-warning">
+                        <a href="{{ url('qnaire',[$chaoSky->tipid]) }}" class="btn btn-xs btn-warning">
                             <i class="fa fa-eye"></i> 查看
                         </a>
                     </td>
