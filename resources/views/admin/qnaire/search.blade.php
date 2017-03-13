@@ -116,21 +116,13 @@
             @endforeach
             </tbody>
             </table>
-            <div class="pull-right">
-
-            </div>
         </div>
     </div>
-
 </div>
 @stop
 
 @section('scripts')
 <script>
-    $(function() {
-        // $("#posts-table").DataTable({
-        //     order: [[0, "desc"]]
-        // });
-    });
+
 </script>
 @stop

@@ -32,6 +32,9 @@ class Jrsx extends Model
         return $imgs;
     }
 
-
+    public function chaoPro()
+    {
+        return $this->belongsTo('App\ChaoPro','proid','id');
+    }
 
 }

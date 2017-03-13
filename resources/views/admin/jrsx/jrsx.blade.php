@@ -53,6 +53,7 @@
                                             其他
                                         @endif
                                     </a>
+                                    ({{$jrsx->chaoPro->proname}})
                                 </div>
                                 <div class="infos">
                                     <div class="media-heading">
