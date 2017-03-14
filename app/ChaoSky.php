@@ -12,7 +12,7 @@ class ChaoSky extends Model
     protected $dates = ['stime','vbtime','vetime','zanendtime'];
 
     protected $fillable = [
-        'tiptitle', 'tipimg1', 'tipcontent', 'tipvideo', 'readnum', 'commentflag', 'draftflag', 'stime', 'proid', 'voteflag', 'vbtime', 'vetime', 'toporder', 'zanflag', 'zannum', 'zanendtime'
+        'tiptitle', 'tipimg1', 'tipcontent', 'tipvideo', 'readnum', 'commentflag', 'draftflag', 'stime', 'proid', 'voteflag', 'voterate', 'vbtime', 'vetime', 'toporder', 'zanflag', 'zannum', 'zanendtime'
     ];
 
     protected $casts = [

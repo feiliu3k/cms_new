@@ -174,6 +174,7 @@
                 commentflag:false,
                 draftflag:false,
                 voteflag:false,
+                voterate:0,
                 vote_begin_date:null,
                 vote_begin_time:null,
                 vote_end_date:null,

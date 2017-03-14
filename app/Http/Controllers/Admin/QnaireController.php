@@ -111,6 +111,8 @@ class QnaireController extends Controller
             $chaoSky->vetime=new Carbon($request->vote_end_date.' '.$request->vote_end_time);
         }
 
+        $chaoSky->voterate=$request->voterate;
+
         $chaoSky->proid=$request->proid;
         $chaoSky->userid=Auth::user()->id;
         $chaoSky->post_user=Auth::user()->id;
@@ -254,6 +256,8 @@ class QnaireController extends Controller
             $chaoSky->vbtime=new Carbon($request->vote_begin_date.' '.$request->vote_begin_time);
             $chaoSky->vetime=new Carbon($request->vote_end_date.' '.$request->vote_end_time);
         }
+
+        $chaoSky->voterate=$request->voterate;
 
         $chaoSky->proid=$request->proid;
         $chaoSky->userid=Auth::user()->id;

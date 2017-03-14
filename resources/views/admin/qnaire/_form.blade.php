@@ -111,35 +111,31 @@
         @endcan
         @can('create-toporder')
         <div class="form-group">
-            <div class="col-md-8 col-md-offset-3">
-                <div class="checkbox">
-                    <label>
-                        <input  type="checkbox" name="toporder" v-model="chaosky.toporder" >
-                        <span style="color:red"><b>置顶</b></span>
-                    </label>
-                </div>
+            <div class="col-md-8 col-md-offset-3"> 
+                <input type="checkbox" name="toporder" v-model="chaosky.toporder" >
+                <span style="color:red"><b>置顶</b></span>
             </div>
         </div>
         @endcan
         <div class="form-group">
+            <div class="col-md-8 col-md-offset-3">                
+                <input type="radio" id="one" value="0" v-model="chaosky.voterate">
+                <label for="one">全程一次</label>                
+                <input type="radio" id="two" value="1" v-model="chaosky.voterate">
+                <label for="two">一天一次</label>               
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-8 col-md-offset-3">
-                <div class="checkbox">
-                    <label>
-                        <input  type="checkbox" name="draftflag" v-model="chaosky.draftflag" >
-                        草稿
-                    </label>
-                </div>
+                <input type="checkbox" name="draftflag" v-model="chaosky.draftflag" >
+                <label>草稿</label>
             </div>
         </div>
         @can('create-comment')
         <div class="form-group">
             <div class="col-md-8 col-md-offset-3">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="commentflag" v-model="chaosky.commentflag">
-                        打开评论
-                    </label>
-                 </div>
+                <input type="checkbox" name="commentflag" v-model="chaosky.commentflag">
+                <label>打开评论</label>                   
             </div>
         </div>
         @endcan

@@ -142,6 +142,7 @@
                 commentflag:false,
                 draftflag:false,
                 voteflag:false,
+                voterate:0,
                 vote_begin_date:null,
                 vote_begin_time:null,
                 vote_end_date:null,
@@ -177,7 +178,7 @@
                 this.chaosky.vote_titles.push({
                     vtid:0,
                     votetitle:'',
-                    aflag:false,
+                    aflag:true,
                     votenum:1,
                     vote_items:[],
                 });
