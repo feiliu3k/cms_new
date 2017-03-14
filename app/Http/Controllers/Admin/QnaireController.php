@@ -66,8 +66,6 @@ class QnaireController extends Controller
     public function store(Request $request)
     {
 
-        //$post = ChaoSky::create($request->postFillData());
-        //dd($request->proid);
 
         $chaoSky = New ChaoSky();
         $chaoSky->tiptitle=$request->tiptitle;
@@ -122,10 +120,10 @@ class QnaireController extends Controller
         if ($chaoSky->voteflag){
             if ($request->vote_titles){
                 foreach ($request->vote_titles as $vt){
-                    $voteTitle = new voteTitle();
+                    $voteTitle = new VoteTitle();
                     $voteTitle->votetitle=$vt['votetitle'];
                     $voteTitle->votenum=$vt['votenum'];
-                    if($vt['aflag']){
+                    if($vt['aflag']=="true"){
                         $voteTitle->aflag=1;
                     }else
                     {
@@ -140,7 +138,7 @@ class QnaireController extends Controller
                             $voteItem->votecount=$vi['votecount'];
                             $voteItem->itemimg=$vi['itemimg'];
                             $voteItem->itemvideo=$vi['itemvideo'];
-                            if($vi['rflag']){
+                            if($vi['rflag']=="true"){
                                 $voteItem->rflag=1;
                             }else
                             {
@@ -155,7 +153,7 @@ class QnaireController extends Controller
                 foreach ($request->input_tables as $it){
                     $inputTable = new InputTable();
                     $inputTable->inputname=$it['inputname'];
-                    if($it['nullflag']){
+                    if($it['nullflag']=="true"){
                         $inputTable->nullflag=1;
                     }else
                     {
@@ -273,11 +271,11 @@ class QnaireController extends Controller
             if ($request->vote_titles)
             {
                 foreach ($request->vote_titles as $vt){
-                    $voteTitle = new voteTitle();
+                    $voteTitle = new VoteTitle();
                     $voteTitle->vtid=$vt['vtid'];
                     $voteTitle->votetitle=$vt['votetitle'];
                     $voteTitle->votenum=$vt['votenum'];
-                    if($vt['aflag']){
+                    if($vt['aflag']=="true"){
                         $voteTitle->aflag=1;
                     }else
                     {
@@ -293,7 +291,7 @@ class QnaireController extends Controller
                             $voteItem->votecount=$vi['votecount'];
                             $voteItem->itemimg=$vi['itemimg'];
                             $voteItem->itemvideo=$vi['itemvideo'];
-                            if($vi['rflag']){
+                            if($vi['rflag']=="true"){
                                 $voteItem->rflag=1;
                             }else
                             {
@@ -333,7 +331,7 @@ class QnaireController extends Controller
                     $inputTable = new InputTable();
                     $inputTable->id=$it['id'];
                     $inputTable->inputname=$it['inputname'];
-                    if($it['nullflag']){
+                    if($it['nullflag']=="true"){
                         $inputTable->nullflag=1;
                     }else
                     {

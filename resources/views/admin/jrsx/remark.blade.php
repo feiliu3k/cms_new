@@ -41,7 +41,10 @@
                                             其他
                                         @endif
                                     </a>
-                                    ({{$jrsx->chaoPro->proname}})
+                                    <a href="{{ route('admin.jrsx.searchbypro', {$jrsx->chaoPro->proid) }}" >
+                                        ({{$jrsx->chaoPro->proname}})
+                                    </a>                                    
+                                    ({{$jrsx->chaoPro->chaoDep->depname}})
                                 </div>
                                 <div class="infos">
                                     <div class="media-heading">

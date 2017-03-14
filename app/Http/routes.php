@@ -46,6 +46,7 @@ $router->group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix'=>'admin
 
 
     get('jrsx/search',['uses'=>'JrsxController@search','as'=>'admin.jrsx.search']);
+    get('jrsx/searchbypro/{proid}',['uses'=>'JrsxController@searchByPro','as'=>'admin.jrsx.searchbypro']);
     post('jrsx/ban',['uses'=>'JrsxController@ban','as'=>'admin.jrsx.ban']);
     get('jrsx/banlist',['uses'=>'JrsxController@banlist','as'=>'admin.jrsx.banlist']);
     get('jrsx/bandelete/{id}',['uses'=>'JrsxController@bandelete','as'=>'admin.jrsx.bandelete']);

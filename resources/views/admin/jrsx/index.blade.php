@@ -38,10 +38,13 @@
                                             送祝福
                                         @else
                                             其他
-                                        @endif
+                                        @endif                                        
                                     </a>
-                                    ({{$jrsx->chaoPro->proname}})
-                                </div>
+                                    <a href="{{ route('admin.jrsx.searchbypro', $jrsx->chaoPro->proid) }}" >
+                                        ({{$jrsx->chaoPro->proname}})
+                                    </a>                                    
+                                    ({{$jrsx->chaoPro->chaoDep->depname}})
+                                </div>   
                                 <div class="infos">
                                     <div class="media-heading">
                                         <a href="{{ route('admin.jrsx.show', $jrsx->id) }}" >
@@ -180,6 +183,27 @@
                         <li><a href="{{ route('admin.jrsx.banlist') }}">禁止列表</a></li>
                         @endcan
                         <li><a href="{{ route('admin.jrsx.index') }}">返回首页</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default corner-radius">
+                <div class="panel-heading text-center">
+                    <h3 class="panel-title">栏目</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list">
+                        @if (count(Auth::user()->ChaoPros)>0)
+                            @foreach (Auth::user()->ChaoPros as $chaoPro)
+                                @if ($chaoPro->rebellion==2)
+                                    <li>
+                                        <a href="{{ route('admin.jrsx.searchbypro', $chaoPro->proid) }}" >
+                                            {{$chaoPro->proname}}--{{$chaoPro->chaoDep->depname}}
+                                        </a>
+                                    </li> 
+                                @endif
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>

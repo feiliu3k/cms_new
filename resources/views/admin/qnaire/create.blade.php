@@ -177,7 +177,7 @@
                 this.chaosky.vote_titles.push({
                     vtid:0,
                     votetitle:'',
-                    aflag:true,
+                    aflag:false,
                     votenum:1,
                     vote_items:[],
                 });

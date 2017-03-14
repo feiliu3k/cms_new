@@ -107,6 +107,7 @@ class JrsxController extends Controller
      */
     public function search(Request $request)
     {
+        $searchText=null;
         $pros=Auth::user()->ChaoPros;
         $proids=array();
         foreach ($pros as $pro) {
@@ -122,4 +123,28 @@ class JrsxController extends Controller
 
         return view('admin.jrsx.index',compact('jrsxes','searchText'));
     }
+
+
+
+    public function searchByPro(Request $request, $proid)
+    {
+        $searchText=null;
+        $pros=Auth::user()->ChaoPros;
+        $proids=array();
+        foreach ($pros as $pro) {
+            array_push($proids, $pro->id);
+        }
+
+        $searchText = $request->searchText;
+        $jrsxes=null;
+
+        if (in_array($proid, $proids)){
+            $jrsxes = Jrsx::where('delflag',0)
+                    ->where('proid',$proid)                   
+                    ->orderBy('postdate', 'desc')
+                    ->paginate(config('cms.posts_per_page'));
+        }
+        return view('admin.jrsx.index',compact('jrsxes','searchText'));
+    }
+    
 }
