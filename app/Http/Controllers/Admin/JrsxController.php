@@ -25,7 +25,7 @@ class JrsxController extends Controller
 
         $searchText=null;
 
-        $pros=Auth::user()->ChaoPros;
+        $pros=Auth::user()->ChaoDep->ChaoPros;
         $proids=array();
 
         foreach ($pros as $pro) {
@@ -94,9 +94,7 @@ class JrsxController extends Controller
         $jrsx = Jrsx::findOrFail($request->jrsx_id);
         $jrsx->delflag=1;
         $jrsx->save();
-        return redirect()
-                        ->route('admin.jrsx.index')
-                        ->withSuccess('报料信息删除成功.');
+        return back()->withSuccess('报料信息删除成功.');
     }
 
         /**
@@ -140,11 +138,11 @@ class JrsxController extends Controller
 
         if (in_array($proid, $proids)){
             $jrsxes = Jrsx::where('delflag',0)
-                    ->where('proid',$proid)                   
+                    ->where('proid',$proid)
                     ->orderBy('postdate', 'desc')
                     ->paginate(config('cms.posts_per_page'));
         }
         return view('admin.jrsx.index',compact('jrsxes','searchText'));
     }
-    
+
 }
