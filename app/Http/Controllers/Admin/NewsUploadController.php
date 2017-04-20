@@ -17,8 +17,9 @@ class NewsUploadController extends Controller
         $file = Input::file('file');
         $filetype = Input::get('filetype');
         $ext=strtolower($file->getClientOriginalExtension());
-
-        $allowed_extensions = array("jpg", "bmp", "gif", "tif","png","jpeg","mp4","3gp","mkv","mpg","avi","mov","m4v");
+        
+        $allowed_extensions = array("jpg", "bmp", "gif", "tif","png","jpeg","mp4","3gp","mkv","mpg","avi","mov","m4v",'mp3','m4a');
+        
         if ($ext && !in_array($ext, $allowed_extensions)) {
             return Response::json([ 'errors' => '只能上传png、jpg、gif、avi、mov、mp4等等文件.']);
         }
