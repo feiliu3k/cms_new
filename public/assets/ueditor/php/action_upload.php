@@ -35,6 +35,7 @@ switch (htmlspecialchars($_GET['action'])) {
             "allowFiles" => $CONFIG['videoAllowFiles']
         );
         $fieldName = $CONFIG['videoFieldName'];
+        $base64 = "video";//添加视频标志，以便生成封面 modify feiliu3k
         break;
     case 'uploadfile':
     default:
