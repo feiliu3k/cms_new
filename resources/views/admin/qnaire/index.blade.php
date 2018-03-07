@@ -7,9 +7,11 @@
             <h3>{{ config('cms.title') }} <small>» 列表</small></h3>
         </div>
         <div class="col-md-6 text-right">
-            <a href="{{ route('admin.qnaire.create') }}" class="btn btn-success btn-md">
-                <i class="fa fa-plus-circle"></i> 新建{{ config('cms.title') }}
-            </a>
+            @can('create-post')
+                <a href="{{ route('admin.qnaire.create') }}" class="btn btn-success btn-md">
+                    <i class="fa fa-plus-circle"></i> 新建{{ config('cms.title') }}
+                </a>
+            @endcan
         </div>
     </div>
     <div class="row">
@@ -20,7 +22,9 @@
                     <input type="text" class="form-control" style="width:100%" id="searchText" name="searchText" placeholder="请输入要搜索的关键字" value={{ $searchText }}>
                 </div>
                 <div class="form-group-lg col-md-2">
-                    <button type="submit" class="btn btn-success form-control" ><i class="fa fa-search"></i> 搜索</button>
+                    @can('list-post')
+                        <button type="submit" class="btn btn-success form-control" ><i class="fa fa-search"></i> 搜索</button>
+                    @endcan
                 </div>
             </form>
         </div>
@@ -105,12 +109,16 @@
                         @endcan
                     @endif
                     <td>
+                        @can('edit-post')
                         <a href="{{ route('admin.qnaire.edit', $chaoSky->tipid) }}" class="btn btn-xs btn-info">
                             <i class="fa fa-edit"></i> 编辑
                         </a>
+                        @endcan
+                        @can('list-post')
                         <a href="{{ url('qnaire',[$chaoSky->tipid]) }}" class="btn btn-xs btn-warning">
                             <i class="fa fa-eye"></i> 查看
                         </a>
+                        @endcan
                     </td>
                 </tr>
             @endforeach
