@@ -92,7 +92,7 @@
     <script src="{{ URL::asset('assets/selectize/selectize.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.form.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.config.js') }}"></script>
-    <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.all.min.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.all.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
     <script src="{{ URL::asset('assets/js/vue.js') }}"></script>
 
