@@ -110,7 +110,7 @@
                                         <div class="list-group-item media 1" style="margin-top: 0px;">
                                             <div class="pull-left avatar">
                                                 <i class="glyphicon glyphicon-thumbs-up"> </i>
-                                                {{$remark->user()->name}}的备注
+                                                {{$remark->user->name}}的备注
                                             </div>
                                             <div class="infos">
                                                 <div class="media-remark add-margin-bottom">
