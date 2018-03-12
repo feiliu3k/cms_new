@@ -26,6 +26,7 @@ class JrsxController extends Controller
         $searchText=null;
 
         $pros=Auth::user()->ChaoDep->ChaoPros;
+        
         $proids=array();
 
         foreach ($pros as $pro) {

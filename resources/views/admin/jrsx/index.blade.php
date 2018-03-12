@@ -84,24 +84,48 @@
                                         <span> • </span>
                                         <span class="postdate">发表时间：{{ $jrsx->postdate }}</span>
                                     </div>
+                                    @cannot('edit-jrsx-allremark')
+                                        @if (Auth::user()->jrsxRemarks->where('jrsxid',$jrsx->id)->first())
+                                        <div class="list-group-item media 1" style="margin-top: 0px;">
+                                            <div class="pull-left avatar">
+                                                <i class="glyphicon glyphicon-thumbs-up"> </i>
+                                                我的备注
+                                            </div>
+                                            <div class="infos">
+                                                <div class="media-remark add-margin-bottom">
+                                                     {{Auth::user()->jrsxRemarks->where('jrsxid',$jrsx->id)->first()->remark}}
+                                                </div>
+                                                <div class="add-margin-bottom">
+                                                    <span class="rtime">{{Auth::user()->jrsxRemarks->where('jrsxid',$jrsx->id)->first()->rtime}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        @endif
+                                    @endcannot
 
-                                    @if (Auth::user()->jrsxRemarks->where('jrsxid',$jrsx->id)->first())
-                                    <div class="list-group-item media 1" style="margin-top: 0px;">
-                                        <div class="pull-left avatar">
-                                            <i class="glyphicon glyphicon-thumbs-up"> </i>
-                                            我的备注
-                                        </div>
-                                        <div class="infos">
-                                            <div class="media-remark add-margin-bottom">
-                                                 {{Auth::user()->jrsxRemarks->where('jrsxid',$jrsx->id)->first()->remark}}
+                                    @can('edit-jrsx-allremark')
+                                        @if ($jrsx->remarks)
+                                        @foreach($jrsx->remarks as $remark)
+                                        <div class="list-group-item media 1" style="margin-top: 0px;">
+                                            <div class="pull-left avatar">
+                                                <i class="glyphicon glyphicon-thumbs-up"> </i>
+                                                {{$remark->user()->name}}的备注
                                             </div>
-                                            <div class="add-margin-bottom">
-                                                <span class="rtime">{{Auth::user()->jrsxRemarks->where('jrsxid',$jrsx->id)->first()->rtime}}</span>
+                                            <div class="infos">
+                                                <div class="media-remark add-margin-bottom">
+                                                     {{$remark->remark}}
+                                                </div>
+                                                <div class="add-margin-bottom">
+                                                    <span class="rtime">{{$remark->rtime}}</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <br />
-                                    @endif
+                                        <br />
+                                        @endforeach
+                                        @endif
+                                    @endcan
+
                                     @can('edit-jrsx-function')
                                     <div class="col-md-6">
                                         @if (Auth::user()->jrsxRemarks->where('jrsxid',$jrsx->id)->first())
