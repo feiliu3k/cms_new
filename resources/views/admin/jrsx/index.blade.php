@@ -106,18 +106,19 @@
 
                                     @can('list_jrsx_allremark')
                                         @if ($jrsx->remarks)
-                                        @foreach($jrsx->remarks as $remark)
+                                        @foreach($jrsx->remarks->groupBy('userid') as $remarks)
+                                        
                                         <div class="list-group-item media 1" style="margin-top: 0px;">
                                             <div class="pull-left avatar">
                                                 <i class="glyphicon glyphicon-thumbs-up"> </i>
-                                                {{$remark->user->name}}的备注
+                                                {{$remarks->first()->user->name}}的备注
                                             </div>
                                             <div class="infos">
                                                 <div class="media-remark add-margin-bottom">
-                                                     {{$remark->remark}}
+                                                     {{$remarks->first()->remark}}
                                                 </div>
                                                 <div class="add-margin-bottom">
-                                                    <span class="rtime">{{$remark->rtime}}</span>
+                                                    <span class="rtime">{{$remarks->first()->rtime}}</span>
                                                 </div>
                                             </div>
                                         </div>

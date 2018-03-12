@@ -43,13 +43,20 @@ class RemarkController extends Controller
      */
     public function store(Request $request)
     {
+        if (JrsxRemark::where('jrsxid',$request->jrsx_id)->where('userid',Auth::user()->id)->first()){
+            return back()->withErrors('备注创建失败！');
+        }
+
+        if ($request->remark==''){
+            return back()->withErrors('备注不能为空！');
+        }
         $jrsxremark = new JrsxRemark();
         $jrsxremark->userid=Auth::user()->id;
         $jrsxremark->remark=$request->remark;
         Jrsx::findOrFail($request->jrsx_id)->remarks()->save($jrsxremark);
         return redirect()
                         ->route('admin.remark.index')
-                        ->withSuccess('备注成功.');
+                        ->withSuccess('备注创建成功！');
 
     }
 
@@ -74,6 +81,9 @@ class RemarkController extends Controller
      */
     public function update(Request $request)
     {
+        if ($request->remark==''){
+            return back()->withErrors('备注不能为空！');
+        }
         $jrsxremark=JrsxRemark::findOrFail($request->jrsxremarkid);
         $jrsxremark->remark=$request->remark;
         $jrsxremark->save();

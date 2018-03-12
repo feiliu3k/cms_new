@@ -33,6 +33,9 @@ class JrsxController extends Controller
             array_push($proids, $pro->id);
         }
 
+       // $jrsx =Jrsx::find(36652);
+       // dd($jrsx->remarks->groupBy('userid')); 
+
         $jrsxes = Jrsx::where('delflag',0)
                 ->wherein('proid',$proids)
                 ->orderBy('postdate', 'desc')
