@@ -84,7 +84,7 @@
                                         <span> • </span>
                                         <span class="postdate">发表时间：{{ $jrsx->postdate }}</span>
                                     </div>
-                                    @cannot('edit-jrsx-allremark')
+                                    @cannot('list_jrsx_allremark')
                                         @if (Auth::user()->jrsxRemarks->where('jrsxid',$jrsx->id)->first())
                                         <div class="list-group-item media 1" style="margin-top: 0px;">
                                             <div class="pull-left avatar">
@@ -104,7 +104,7 @@
                                         @endif
                                     @endcannot
 
-                                    @can('edit-jrsx-allremark')
+                                    @can('list_jrsx_allremark')
                                         @if ($jrsx->remarks)
                                         @foreach($jrsx->remarks as $remark)
                                         <div class="list-group-item media 1" style="margin-top: 0px;">
