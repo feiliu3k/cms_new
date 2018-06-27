@@ -9,6 +9,13 @@
     <div class="container-fluid">
         @include('admin.partials.errors')
         @include('admin.partials.success')
+        <div class="col-md-8 col-md-offset-1 alert alert-danger">
+            <button type="button" class="close">×</button>
+            <strong>
+                <i class="fa fa-exclamation-triangle fa-lg fa-fw"></i> 警告.
+            </strong>
+            你有<span class="message-count">0</span>未读新消息！
+        </div>
         <div class="col-md-8 col-md-offset-1 topics-index main-col">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -78,11 +85,11 @@
 
 
                                     <div class="add-margin-bottom">
-                                    <span class="username">姓名：{{ $jrsx->username }}</span>
+                                        <span class="username">姓名：{{ $jrsx->username }}</span>
                                         <span> • </span>
                                         <span class="dh">手机号码：{{ $jrsx->dh }}</span>
-                                        <span> • </span>
-                                        <span class="postdate">发表时间：{{ $jrsx->postdate }}</span>
+                                        <span> • 发表时间：</span>
+                                        <span class="postdate">{{ $jrsx->postdate }}</span>
                                     </div>
                                     @cannot('list_jrsx_allremark')
                                         @if (Auth::user()->jrsxRemarks->where('jrsxid',$jrsx->id)->first())
@@ -246,6 +253,7 @@
 <script>
 
     $(function() {
+        $('.alert-danger').hide();
 
         var lightbox = new LightBox();
         var videobox = new VideoBox();
@@ -297,6 +305,43 @@
             modal.find('.modal-body input').val(jrsxremarkid);
             modal.find('.modal-body textarea').val(remark);
         });
+
+
+        //开启定时器
+        var setTimeoutName ;
+        var i = 0;
+        var newmsg_count = 0;
+        var getNewMessageCount = function(){
+            _self=this;
+            
+            var postdate = $('.add-margin-bottom .postdate:first').text();
+            
+            $.ajax({
+                type: "get",
+                url: "jrsx/new",
+                data: "postdate="+postdate,
+                success: function(data){                                        
+                    if ((data.count>0) && (_self.newmsg_count!=data.count)) {
+                        _self.newmsg_count=data.count;
+                        $('.message-count').text(_self.newmsg_count)
+                        $('.alert-danger').show();
+                        console.log(data);
+                    }        
+                }               
+            });            
+            
+            setTimeoutName = setTimeout(getNewMessageCount, 3000);
+        } 
+
+        getNewMessageCount();  
+        
+        //关闭定时器
+        // function clearTimeoutDemo(){
+        //     clearTimeout(setTimeoutName);
+        //     i = 0;
+        //     alert("关闭定时器成功");
+        // }
+
 
     });
 

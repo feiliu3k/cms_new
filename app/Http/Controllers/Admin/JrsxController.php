@@ -43,6 +43,23 @@ class JrsxController extends Controller
         return view('admin.jrsx.index',compact('jrsxes','searchText'));
     }
 
+    public function newMessage(Request $request)
+    {
+        $pros=Auth::user()->ChaoDep->ChaoPros;
+        
+        $proids=array();
+
+        foreach ($pros as $pro) {
+            array_push($proids, $pro->id);
+        } 
+       
+        $count = Jrsx::where('delflag',0)
+                    ->wherein('proid',$proids)
+                    ->where('postdate', '>', $request->postdate)
+                    ->count();
+
+        return ['count'=>$count];
+    }
 
 
 
