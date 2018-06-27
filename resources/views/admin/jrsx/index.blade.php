@@ -333,7 +333,11 @@
             setTimeoutName = setTimeout(getNewMessageCount, 3000);
         } 
 
-        getNewMessageCount();  
+        getNewMessageCount(); 
+
+        $('.alert-danger').click(function(){
+            $('.alert-danger').hide();
+        }); 
         
         //关闭定时器
         // function clearTimeoutDemo(){
