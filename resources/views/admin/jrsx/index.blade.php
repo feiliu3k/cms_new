@@ -14,7 +14,7 @@
             <strong>
                 <i class="fa fa-exclamation-triangle fa-lg fa-fw"></i> 警告.
             </strong>
-            你有<span class="message-count">0</span>未读新消息！
+            你有<span class="message-count">0</span>未读新消息,请点击刷新查看！
         </div>
         <div class="col-md-8 col-md-offset-1 topics-index main-col">
             <div class="panel panel-default">
@@ -251,6 +251,7 @@
 <script src="{{ URL::asset('assets/js/lightbox.js') }}"></script>
 <script src="{{ URL::asset('assets/js/videobox.js') }}"></script>
 <script>
+
     ;(function($) {
     
         $.extend({
@@ -345,6 +346,7 @@
         var setTimeoutName ;
         var i = 0;
         var newmsg_count = 0;
+        var timerArr=null;
         var getNewMessageCount = function(){
             _self=this;
             
@@ -359,18 +361,24 @@
                         _self.newmsg_count=data.count;
                         $('.message-count').text(_self.newmsg_count)
                         $('.alert-danger').show();
+                        if (_self.timerArr) {
+                           $.blinkTitle.clear(_self.timerArr);
+                        }
+                        _self.timerArr = $.blinkTitle.show();
                         console.log(data);
                     }        
                 }               
             });            
             
-            setTimeoutName = setTimeout(getNewMessageCount, 3000);
+            setTimeoutName = setTimeout(getNewMessageCount, 60000);
         } 
 
         getNewMessageCount(); 
 
         $('.alert-danger').click(function(){
             $('.alert-danger').hide();
+            $.blinkTitle.clear(timerArr);
+            location.reload();
         }); 
         
         //关闭定时器
@@ -379,11 +387,11 @@
         //     i = 0;
         //     alert("关闭定时器成功");
         // }
-        var timerArr = $.blinkTitle.show();
-        
-        setTimeout(function() {     //此处是过一定时间后自动消失
-            $.blinkTitle.clear(timerArr);
-        }, 10000);
+       
+        //此处是过一定时间后自动消失
+        // setTimeout(function() {     
+        //     $.blinkTitle.clear(timerArr);   
+        // }, 10000);
 
     });
 
