@@ -26,7 +26,7 @@ post('/comment/verify', 'CommentController@verify');
 
 $router->group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix'=>'admin'], function () {
 
-    get('admin', 'QnaireController@index');
+    get('/', 'QnaireController@index');
     post('user/change',['uses' => 'UserController@change', 'as' => 'admin.user.change']);
     get('user/editRole/{id}',['uses' => 'UserController@editRole', 'as' => 'admin.user.editRole']);
     post('user/updateRole/{id}',['uses' => 'UserController@updateRole', 'as' => 'admin.user.updateRole']);
