@@ -124,13 +124,20 @@ class Uploader
         } else { //移动成功
             $this->stateInfo = $this->stateMap[0];
             
-            if ($this->type="video"){
-            $ffmpeg = FFMpeg\FFMpeg::create();
+            if ($this->type=="video"){
+            $ffmpeg = FFMpeg\FFMpeg::create(array(
+                         'ffmpeg.binaries'  => '/usr/local/ffmpeg/bin/ffmpeg',
+                         'ffprobe.binaries' => '/usr/local/ffmpeg/bin/ffprobe',
+                         'timeout'          => 3600, // The timeout for the underlying process
+                         'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
+                ));
             $video = $ffmpeg->open($this->filePath);
             $video
                 ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(1))
                 ->save($this->filePath.'.jpg');
-            }    
+
+            }
+    
         }
     }
 
