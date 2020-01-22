@@ -35,7 +35,7 @@ class Jrsx extends Model
             if(strpos($img, $pattern) === 0) {
                 continue;
             } else {
-                $imgs[$key] = $img;
+                $imgs[$key] = config('cms.jrsx.imagePath').$img;
             }     
         }
         return $imgs;
