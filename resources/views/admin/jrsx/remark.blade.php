@@ -58,8 +58,8 @@
                                                 @if (!containsDescenders($img))
                                                 <img class="js-lightbox"
                                                     data-role="lightbox"
-                                                    data-source="{{ config('cms.jrsx.imagePath').$img }}"
-                                                    src="{{ config('cms.jrsx.imagePath').$img }}"
+                                                    data-source="{{ $img }}"
+                                                    src="{{ $img }}"
                                                     data-group="{{ $jrsx->id }}"
                                                     data-id="{{ $img }}"
                                                     data-caption="{{ $jrsx->username }}"
@@ -69,7 +69,7 @@
                                                 @else
                                                     <img class="js-videobox"
                                                     data-role="videobox"
-                                                    data-source="{{ config('cms.jrsx.imagePath').$img }}"
+                                                    data-source="{{ $img }}"
                                                     src="{{ URL::asset('img/play.png') }}"
                                                     width="100px" height="100px" />
                                                 @endif
